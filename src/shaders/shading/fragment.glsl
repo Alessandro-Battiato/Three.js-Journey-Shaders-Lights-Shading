@@ -23,15 +23,15 @@ void main()
         vec3(0.1, 0.1, 1.0), // Light color
         1.0, // Light intensity
         normal, // Normal
-        vec3(0.0, 0.0, 3.0), // Light position
+        vec3(0.0, 2.5, 0.0), // Light position
         viewDirection, // View direction
         20.0 // Specular power
     );
     light += pointLight(
-        vec3(1.0, 0.1, 0.1), // Light color
+        vec3(0.1, 1.0, 0.5), // Light color
         1.0, // Light intensity
         normal, // Normal
-        vec3(0.0, 2.5, 0.0), // Light position
+        vec3(2.0, 2.0, 2.0), // Light position
         viewDirection, // View direction
         20.0, // Specular power
         vPosition, // Position
