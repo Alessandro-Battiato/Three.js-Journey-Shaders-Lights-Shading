@@ -1,6 +1,17 @@
 uniform vec3 uColor;
 
+varying vec3 vNormal;
+
 #include ../includes/ambientLight.glsl
+
+vec3 directionalLight(vec3 lightColor, float lightIntensity, vec3 normal, vec3 lightPosition) {
+    vec3 lightDirection = normalize(lightPosition);
+
+    // Shading
+    float shading = dot(normal, lightDirection); // dot product
+
+    return lightColor * lightIntensity * shading;
+}
 
 void main()
 {
@@ -8,9 +19,16 @@ void main()
 
     // Light
     vec3 light = vec3(0.0); // fully dark light thus no colors
-    light += ambientLight(
+    /* light += ambientLight(
         vec3(1.0), // Light color
         0.03 // Light intensity
+    );
+    */
+    light += directionalLight(
+        vec3(0.1, 0.1, 1.0), // Light color
+        1.0, // Light intensity
+        vNormal, // Normal
+        vec3(0.0, 0.0, 3.0) // Light position
     );
     color *= light;
 
